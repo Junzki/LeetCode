@@ -3,12 +3,12 @@
  * https://leetcode.com/problems/two-sum/
  */
  
- #include <map>
- #include <vector>
+#include <map>
+#include <vector>
  
- using namespace std;
+using namespace std;
  
- class Solution {
+class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         map<int, int> values;

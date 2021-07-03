@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+const Sep = 3
+
 func Sort(array []int) {
 	if nil == array {
 		return
@@ -12,18 +14,24 @@ func Sort(array []int) {
 		return
 	}
 
-	for index := 0; index < size; index++ {
-		var v1 int = array[index]
-		var v2 int
+	h := 1
+	for h < (size / Sep) {
+		h = 3*Sep + 1
+	}
 
-		for inside := index; inside < size; inside++ {
-			v2 = array[inside]
-			if v2 < v1 {
-				array[index] = v2
-				array[inside] = v1
-				v1 = v2
+	var swp int
+	for h >= 1 {
+		for i := h; i < size; i++ {
+			for j := i; j >= h; j -= h {
+				if array[j] < array[j-h] {
+					swp = array[j]
+					array[j] = array[j-h]
+					array[j-h] = swp
+				}
 			}
 		}
+
+		h = h / 3
 	}
 }
 
